@@ -1,0 +1,13 @@
+package com.hidalgosoft.cursosrest;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class CursosRestApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(CursosRestApplication.class, args);
+    }
+
+}
