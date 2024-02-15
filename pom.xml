@@ -12,8 +12,8 @@
     <artifactId>cursos-rest</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
-    <name>municipios</name>
-    <description>municipios</description>
+    <name>cursos-rest</name>
+    <description>cursos-rest</description>
     <properties>
         <java.version>1.8</java.version>
     </properties>
