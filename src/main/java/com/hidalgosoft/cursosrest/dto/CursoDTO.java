@@ -12,6 +12,6 @@ public class CursoDTO {
     private Date fechaTermino;
     private String horaInicio;
     private String horaTermino;
-    private Integer diasDifusion;
+    private String diasDifusion;
     private Long municipioId;
 }

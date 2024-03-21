@@ -6,6 +6,7 @@ import com.hidalgosoft.cursosrest.service.CursoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigInteger;
 import java.sql.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -22,15 +23,18 @@ public class CursoServiceImpl implements CursoService {
     }
 
     private CursoDTO mapToCursoDTO(Object[] resultado) {
+        BigInteger bigIntegerObj = new BigInteger(String.valueOf(resultado[1]));
         CursoDTO dto = new CursoDTO();
         dto.setNombre((String) resultado[0]);
-        dto.setId((Long) resultado[1]);
+        dto.setId(bigIntegerObj.longValue());
         dto.setFechaInicio((Date) resultado[2]);
         dto.setFechaTermino((Date) resultado[3]);
         dto.setHoraInicio((String) resultado[4]);
         dto.setHoraTermino((String) resultado[5]);
-        dto.setDiasDifusion((Integer) resultado[6]);
-        dto.setMunicipioId((Long) resultado[7]);
+        dto.setDiasDifusion((String) resultado[6]);
+
+        bigIntegerObj=new BigInteger(String.valueOf(resultado[7]));
+        dto.setMunicipioId(bigIntegerObj.longValue());
         return dto;
     }
 }

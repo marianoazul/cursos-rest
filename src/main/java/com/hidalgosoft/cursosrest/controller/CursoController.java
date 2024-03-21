@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/cursos")
+@RequestMapping("/api/v1/cursos")
 public class CursoController {
 
     @Autowired
@@ -20,5 +20,9 @@ public class CursoController {
     @GetMapping("/municipio/{municipioId}")
     public List<CursoDTO> getCursosByMunicipioId(@PathVariable Long municipioId) {
         return cursoService.findCursosByMunicipioId(municipioId);
+    }
+    @GetMapping("/hola")
+    public String getCursosByMunicipioId() {
+        return "cursoService.findCursosByMunicipioId(municipioId)";
     }
 }
