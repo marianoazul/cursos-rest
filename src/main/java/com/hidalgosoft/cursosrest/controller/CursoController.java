@@ -3,6 +3,7 @@ package com.hidalgosoft.cursosrest.controller;
 import com.hidalgosoft.cursosrest.dto.CursoDTO;
 import com.hidalgosoft.cursosrest.dto.GrupoUsuarioDTO;
 import com.hidalgosoft.cursosrest.entity.UsuarioEntity;
+import com.hidalgosoft.cursosrest.model.response.ApiResponse;
 import com.hidalgosoft.cursosrest.repository.UsuarioGrupoRepository;
 import com.hidalgosoft.cursosrest.service.CursoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +26,8 @@ public class CursoController {
         return cursoService.findCursosByMunicipioId(municipioId);
     }
     @GetMapping("/asignacion_grupo_usuario")
-    public String getCursosByMunicipioId(@RequestBody GrupoUsuarioDTO grupoUsuarioDTO) {
+    public ApiResponse<Object> getCursosByMunicipioId(@RequestBody GrupoUsuarioDTO grupoUsuarioDTO) {
         usuarioGrupoRepository.insertarUsuarioGrupo(grupoUsuarioDTO.getGrupoId(),grupoUsuarioDTO.getUsuarioId());
-        return "cursoService.findCursosByMunicipioId(municipioId)";
+        return ApiResponse.ok(null);
     }
 }

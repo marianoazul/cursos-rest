@@ -4,6 +4,7 @@ package com.hidalgosoft.cursosrest.controller;
 import com.hidalgosoft.cursosrest.dto.CursoDTO;
 import com.hidalgosoft.cursosrest.entity.Estado;
 import com.hidalgosoft.cursosrest.entity.Municipio;
+import com.hidalgosoft.cursosrest.model.response.ApiResponse;
 import com.hidalgosoft.cursosrest.repository.EstadoRepository;
 import com.hidalgosoft.cursosrest.repository.MunicipioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,12 +26,12 @@ public class UbicacionController {
     private MunicipioRepository municipioRepository;
 
     @GetMapping("/estados/{paisId}")
-    public List<Estado> getEstadoByPaisId(@PathVariable Long paisId) {
-        return estadoRepository.findAllByPaisId(paisId);
+    public ApiResponse<List<Estado>> getEstadoByPaisId(@PathVariable Long paisId) {
+        return ApiResponse.ok(estadoRepository.findAllByPaisId(paisId));
     }
     @GetMapping("/municipios/{estadoId}")
-    public List<Municipio> getCursosByEstadoId(@PathVariable Long estadoId) {
-        return municipioRepository.findByEstadoId(estadoId);
+    public ApiResponse<List<Municipio>> getCursosByEstadoId(@PathVariable Long estadoId) {
+        return ApiResponse.ok(municipioRepository.findByEstadoId(estadoId));
     }
 
 
