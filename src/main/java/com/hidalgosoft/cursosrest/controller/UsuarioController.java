@@ -2,6 +2,7 @@ package com.hidalgosoft.cursosrest.controller;
 
 import com.hidalgosoft.cursosrest.entity.UsuarioEntity;
 import com.hidalgosoft.cursosrest.model.response.ApiResponse;
+import com.hidalgosoft.cursosrest.repository.UsuarioGrupoRepository;
 import com.hidalgosoft.cursosrest.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

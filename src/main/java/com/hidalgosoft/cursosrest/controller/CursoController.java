@@ -15,19 +15,24 @@ import java.util.List;
 @RequestMapping("/api/v1/cursos")
 public class CursoController {
 
-    @Autowired
-    private CursoService cursoService;
+    private final CursoService cursoService;
+
+    private final UsuarioGrupoRepository usuarioGrupoRepository;
 
     @Autowired
-    private UsuarioGrupoRepository usuarioGrupoRepository;
+    public CursoController(CursoService cursoService, UsuarioGrupoRepository usuarioGrupoRepository) {
+        this.cursoService = cursoService;
+        this.usuarioGrupoRepository = usuarioGrupoRepository;
+    }
 
     @GetMapping("/municipio/{municipioId}")
-    public List<CursoDTO> getCursosByMunicipioId(@PathVariable Long municipioId) {
-        return cursoService.findCursosByMunicipioId(municipioId);
+    public ApiResponse<List<CursoDTO>> getCursosByMunicipioId(@PathVariable Long municipioId) {
+        return ApiResponse.ok(cursoService.findCursosByMunicipioId(municipioId));
     }
+
     @GetMapping("/asignacion_grupo_usuario")
     public ApiResponse<Object> getCursosByMunicipioId(@RequestBody GrupoUsuarioDTO grupoUsuarioDTO) {
-        usuarioGrupoRepository.insertarUsuarioGrupo(grupoUsuarioDTO.getGrupoId(),grupoUsuarioDTO.getUsuarioId());
+        usuarioGrupoRepository.insertarUsuarioGrupo(grupoUsuarioDTO.getGrupoId(), grupoUsuarioDTO.getUsuarioId());
         return ApiResponse.ok(null);
     }
 }

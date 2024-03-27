@@ -42,4 +42,6 @@ public class UsuarioEntity {
     Date fechaNacimiento;
     @Column(name = "materno", length = 150)
     String materno;
+    @Transient
+    long grupo;
 }
