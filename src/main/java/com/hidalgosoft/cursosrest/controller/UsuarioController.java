@@ -22,27 +22,27 @@ public class UsuarioController {
     }
 
     @GetMapping
-    public ResponseEntity<ApiResponse<List<UsuarioEntity>>> getAll() {
-        return ResponseEntity.ok(service.getAll());
+    public ApiResponse<List<UsuarioEntity>> getAll() {
+        return service.getAll();
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<ApiResponse<UsuarioEntity>> findById(@PathVariable long id) {
-        return ResponseEntity.ok(service.findById(id));
+    public ApiResponse<UsuarioEntity> findById(@PathVariable long id) {
+        return service.findById(id);
     }
 
     @PostMapping
-    public ResponseEntity<ApiResponse<UsuarioEntity>> save(@RequestBody UsuarioEntity usuario) {
-        return ResponseEntity.ok(service.save(usuario));
+    public ApiResponse<UsuarioEntity> save(@RequestBody UsuarioEntity usuario) {
+        return service.save(usuario);
     }
 
     @PutMapping
-    public ResponseEntity<ApiResponse<UsuarioEntity>> update(@RequestBody UsuarioEntity usuario) {
-        return ResponseEntity.ok(service.update(usuario));
+    public ApiResponse<UsuarioEntity> update(@RequestBody UsuarioEntity usuario) {
+        return service.update(usuario);
     }
 
     @DeleteMapping("{id}")
-    public ResponseEntity<ApiResponse<Object>> delete(@PathVariable long id) {
-        return ResponseEntity.ok(service.delete(id));
+    public ApiResponse<Object> delete(@PathVariable long id) {
+        return service.delete(id);
     }
 }

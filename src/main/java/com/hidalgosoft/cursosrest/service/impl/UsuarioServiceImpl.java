@@ -6,6 +6,7 @@ import com.hidalgosoft.cursosrest.repository.UsuarioGrupoRepository;
 import com.hidalgosoft.cursosrest.repository.UsuarioRepository;
 import com.hidalgosoft.cursosrest.service.UsuarioService;
 
+import static com.hidalgosoft.cursosrest.utils.Messages.USER_FOUND_BY_EMAIL;
 import static com.hidalgosoft.cursosrest.utils.Messages.USER_NOT_FOUND;
 
 import lombok.extern.slf4j.Slf4j;
@@ -44,12 +45,20 @@ public class UsuarioServiceImpl implements UsuarioService {
         return usuario.map(ApiResponse::ok).orElseGet(() -> ApiResponse.error(USER_NOT_FOUND + id));
     }
 
+    @Override
+    public List<UsuarioEntity> findByEmail(String email) {
+        return usuarioRepository.findByEmail(email);
+    }
+
     @Transactional
     @Override
     public ApiResponse<UsuarioEntity> save(UsuarioEntity usuario) {
         Long grupo = usuario.getGrupo();
         try {
-//            usuario.setId(usuarioRepository.id().longValue());
+            List<UsuarioEntity> busqueda = findByEmail(usuario.getEmail());
+            if (!busqueda.isEmpty()) {
+                return ApiResponse.error(USER_FOUND_BY_EMAIL + usuario.getEmail(), new UsuarioEntity());
+            }
             usuario.setId(ejecutarConsulta());
             usuario.setCalle("");
             usuario.setColonia(0L);

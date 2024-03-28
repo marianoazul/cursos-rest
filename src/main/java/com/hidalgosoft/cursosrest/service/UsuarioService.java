@@ -10,6 +10,8 @@ public interface UsuarioService {
 
     ApiResponse<UsuarioEntity> findById(long id);
 
+    List<UsuarioEntity> findByEmail(String email);
+
     ApiResponse<UsuarioEntity> save(UsuarioEntity usuario);
 
     ApiResponse<UsuarioEntity> update(UsuarioEntity usuario);
